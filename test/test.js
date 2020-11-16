@@ -22,4 +22,12 @@ describe('API endpoints', () => {
             .get('/cheeses')
             .expect(200, done);
     });
+
+    it('404 everything else', done => {
+        request(api)
+            .get('/apple')
+            .expect(404, done);
+    });
+
+
 })
