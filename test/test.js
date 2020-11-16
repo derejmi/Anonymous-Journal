@@ -29,5 +29,37 @@ describe('API endpoints', () => {
             .expect(404, done);
     });
 
+     after(done => {
+        // close the server, then run done
+        console.log('Gracefully stopping test server')
+        api.close(done)
+    })
 
+})
+// describe('API server', () => {
+//     let api
+//     let testCheese = {
+//         "name": "mozzerela",
+        
+//     }
+
+// it('responds to post /cheeses with status 201', done => {
+//     request(api)
+//         .post('/cheeses')
+//         .send(testCheese)
+//         .expect(201)
+//         .expect({id: 4, ...testCheese}, done)
+// })
+// })
+
+describe('/POST cheeses', () => {
+    it('it should  POST cheese ', (done) => {
+        let cheese = {
+            name: "mozerrela",
+           
+        }
+      chai.request(server)
+          .post('/cheese')
+          .send(cheese)
+    })
 })

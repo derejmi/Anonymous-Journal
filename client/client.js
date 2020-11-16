@@ -1,7 +1,10 @@
 
+/*
+
 //Set up
 const form = document.querySelector(".post-form")
 const spinner = document.querySelector(".spinner")
+const postElement = document.querySelector(".posts")
 
 //On-loading hide spinner
 spinner.style.display = 'none'
@@ -40,7 +43,8 @@ fetch('http://localhost:3000/cheeses')
         div.appendChild(date)
         div.appendChild(button)
 
-        
+
+
 
     
     })
@@ -84,8 +88,11 @@ headers: {
 }
 
 fetch('http://localhost:3000/cheeses',options 
-).then(r=>r.text())
+)
+.then(r=>r.text())
 .then(message=>{console.log(message)})
-})
 
 
+}
+
+*/

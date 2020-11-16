@@ -1,0 +1,14 @@
+[
+    {
+        "name": "cheese1",
+        "type": "cheddar"
+    },
+    {
+        "name": "cheese2",
+        "type": "mozzarella"
+    },
+    {
+        "name": "cheese3",
+        "type": "feta"
+    }
+]
