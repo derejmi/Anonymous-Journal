@@ -49,12 +49,17 @@ server.listen(3000, () => console.log("Server being departed!"))
 //checking if server works with dummy results
 //const cheese = ['brie', 'mozzarela', 'cheddar']
 server.get('/cheeses', (req, res) => {
-  res.send(updatedData)
+  res.json(updatedData)
      });
 
-    // server.post('/cheeses', (req,res) => {
-    // const cheeseData = req.body;
-     //const newCheese = {id: cheese.length +1, ...cheeseData}
+ server.post('/cheeses', (req,res) => {
+    const newCheese = {
+        name: 'cheese5',
+        type: 'gorgonzola'
+    };
+     const newData = updatedData.push(newCheese)
+     res.send(newData)
+})
      //cheese.push(newCheese);
     // res.send("cheese");
     // });
