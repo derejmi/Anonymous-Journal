@@ -38,6 +38,8 @@ function loadPosts() {
         div.appendChild(contents);
         div.appendChild(date);
         div.appendChild(comment);
+
+        postElement.append(div);
       });
     });
 }
