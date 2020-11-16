@@ -15,3 +15,10 @@
 .spinner{
   text-align: center;
 }
+
+.apple {
+  display:block;
+  position:absolute;
+  top: 225px;
+  right:350;
+}
