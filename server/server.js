@@ -10,7 +10,7 @@ server.use(bodyParser.json())
 
 //To read data from the post database file asynchronously 
 const fs = require('fs')
- fs.readFile('./database.json', 'utf8', (err, data) => {
+fs.readFile('./database.json', 'utf8', (err, data) => {
 
     if (err) {
         console.log(`Error reading file from disk: ${err}`);
@@ -30,6 +30,7 @@ const fs = require('fs')
 
 });
 
+const updatedData = require('./database.json');
 //const postData =fs.readFile('./database.json', 'utf8', (err, data) => {
     //if (err) {
        // console.log(`Error reading file from disk: ${err}`);
@@ -46,17 +47,17 @@ const fs = require('fs')
 server.listen(3000, () => console.log("Server being departed!"))
 
 //checking if server works with dummy results
-const cheese = ['brie', 'mozzarela', 'cheddar']
+//const cheese = ['brie', 'mozzarela', 'cheddar']
 server.get('/cheeses', (req, res) => {
-  res.send(cheese)
+  res.send(updatedData)
      });
 
-     server.post('/cheeses', (req,res) => {
-     const cheeseData = req.body;
-     const newCheese = {id: cheese.length +1, ...cheeseData}
-     cheese.push(newCheese);
-     res.send("cheese");
-     });
+    // server.post('/cheeses', (req,res) => {
+    // const cheeseData = req.body;
+     //const newCheese = {id: cheese.length +1, ...cheeseData}
+     //cheese.push(newCheese);
+    // res.send("cheese");
+    // });
 
 
 module.exports = server;
