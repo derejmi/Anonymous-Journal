@@ -1,24 +1,47 @@
-.header-title{
-    text-align:center;
+.header-title {
+  text-align: center;
 }
 
-.post-form{
-    width: 50%;
-    margin: 0 auto;
-}
-
-.button-primary{
-  display:block;
+.post-form {
+  width: 50%;
   margin: 0 auto;
 }
 
-.spinner{
+.button-primary {
+  display: block;
+  margin: 0 auto;
+}
+
+.spinner {
   text-align: center;
 }
 
 .apple {
-  display:block;
-  position:absolute;
+  display: block;
+  position: absolute;
   top: 225px;
-  right:350;
+  right: 350;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+  margin: 20px auto;
+  width: 70%;
+}
+
+.allposts {
+  background: #f2f2f2;
+  padding: 10px;
+  margin: 10px;
+}
+
+.icons {
+  display: flex;
+  width: 65%;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 20px;
 }
