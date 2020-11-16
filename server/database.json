@@ -10,5 +10,13 @@
     {
         "name": "cheese3",
         "type": "feta"
+    },
+    {
+        "name": "cheese4",
+        "type": "halumi"
+    },
+    {
+        "name": "cheese4",
+        "type": "halumi"
     }
 ]
