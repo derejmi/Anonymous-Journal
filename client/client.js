@@ -10,7 +10,9 @@ loadPosts();
 //On load - load all the posts
 
 function loadPosts() {
-  fetch("http://localhost:3000/cheeses")
+  //blank out everything there before and then add to the page
+  postElement.innerHTML = "";
+  fetch("http://localhost:3000/posts")
     .then((r) => r.json())
     .then((posts) => {
       posts.reverse();
@@ -27,7 +29,7 @@ function loadPosts() {
 
         //date
         const date = document.createElement("small");
-        date.textContent = new Date(post.created);
+        date.textContent = new Date(post.date);
 
         //comment button
         // const comment = document.createElement("button");
@@ -83,9 +85,13 @@ form.addEventListener("submit", (event) => {
     },
   };
 
-  fetch("http://localhost:3000/cheeses", options)
+  fetch("http://localhost:3000/posts", options)
     .then((r) => r.text())
     .then((message) => {
       console.log(message);
+      form.reset();
+      form.style.display = "";
+      spinner.style.display = "none";
+      loadPosts();
     });
 });
