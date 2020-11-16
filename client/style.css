@@ -1,0 +1,17 @@
+.header-title{
+    text-align:center;
+}
+
+.post-form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.button-primary{
+  display:block;
+  margin: 0 auto;
+}
+
+.spinner{
+  text-align: center;
+}
