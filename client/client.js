@@ -2,36 +2,33 @@
 const form = document.querySelector(".post-form");
 const spinner = document.querySelector(".spinner");
 const postElement = document.querySelector(".posts");
-const content = document.querySelector("#content")
+const content = document.querySelector("#content");
 const counterEle = document.createElement("p");
 
+//On-loading hide spinner
+spinner.style.display = "none";
 
 loadPosts();
 //On load - load all the posts
 
 //counting the characters
-content.addEventListener("input", e => {
+content.addEventListener("input", (e) => {
   e.preventDefault();
-  const target = e.target
-   const currentLength = target.value.length;
-   form.append(counterEle)
-   counterEle.textContent = `${currentLength}/200`
-   
-   function checkingForLength (currentLength) {
-   if (currentLength > 199) {
-    alert ("Too many characters, you only can write 199 characters") 
-    return content.disabled = true;
+  const target = e.target;
+  const currentLength = target.value.length;
+  form.append(counterEle);
+  counterEle.textContent = `${currentLength}/200`;
+
+  function checkingForLength(currentLength) {
+    if (currentLength > 199) {
+      alert("Too many characters, you only can write 199 characters");
+      return (content.disabled = true);
+    }
   }
-}
-checkingForLength(currentLength);
+  checkingForLength(currentLength);
 });
 
 //disabelling the submit button if characters over 200
-
-
-//On-loading hide spinner
-spinner.style.display = "none";
-
 
 function loadPosts() {
   //blank out everything there before and then add to the page
@@ -39,7 +36,7 @@ function loadPosts() {
   fetch("http://localhost:3000/posts")
     .then((r) => r.json())
     .then((posts) => {
-      posts.reverse();//we reverse it to see the most recent post at the top
+      posts.reverse();
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.className = "allposts";
