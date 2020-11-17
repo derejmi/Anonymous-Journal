@@ -43,6 +43,7 @@ function loadPosts() {
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.className = "allposts";
+        div.id = `$Post ${post.id}`;
         //headers to show usernames
         const header = document.createElement("h3");
         header.textContent = post.name;
@@ -55,22 +56,26 @@ function loadPosts() {
         const date = document.createElement("small");
         date.textContent = new Date(post.date);
 
-        //comment button
-        // const comment = document.createElement("button");
-        // comment.className = "comment";
-        // comment.value = "Comment";
-
         const reactionDiv = document.createElement("div");
 
-        const icons = `<i class="far fa-comment"></i>
-        <i class="far fa-thumbs-up"></i>
-        <i class="far fa-thumbs-down"></i>
-        <i class="far fa-laugh-squint"></i>
-        `;
+        // const icons = `<i class="far fa-comment"></i>
+        // <i class="far fa-thumbs-up emojis ${post.id}"> </i>
+        // <i class="far fa-thumbs-down emojis ${post.id}"></i>
+        // <i class="far fa-laugh-squint emojis ${post.id}"></i>
+        // `;
 
-        reactionDiv.className = "icons";
+        const commentIcon = `<i class="far fa-comment"></i>`;
+        const likeIcon = `<div><i class="far fa-thumbs-up emojis ${post.id}"></i><span>${post.likes}</span></div>`;
+        const dislikeIcon = `<div><i class="far fa-thumbs-down emojis ${post.id}"></i><span>${post.dislikes}</span></div>`;
+        const laughIcon = `<div><i class="far fa-laugh-squint emojis ${post.id}"></i><span>${post.laughs}</span></div>`;
 
-        reactionDiv.innerHTML = icons;
+        reactionDiv.className = `icons`;
+
+        // likeIcon.textContent = post["likes"].toString();
+        // dislikeIcon.textContent = post["dislikes"].toString();
+
+        reactionDiv.innerHTML =
+          commentIcon + likeIcon + dislikeIcon + laughIcon;
 
         div.appendChild(header);
         div.appendChild(contents);
@@ -119,3 +124,151 @@ form.addEventListener("submit", (event) => {
       loadPosts();
     });
 });
+
+addCustomEventListener(".emojis", "click", emojiHandler);
+
+//Generic function to handle event listeners of future elements
+
+function addCustomEventListener(selector, event, handler) {
+  let rootElement = document.querySelector(".posts");
+  //since the root element is set to be body for our current dealings
+  rootElement.addEventListener(
+    event,
+    function (evt) {
+      let targetElement = evt.target;
+      while (targetElement != null) {
+        if (targetElement.matches(selector)) {
+          handler(evt, targetElement);
+          return;
+        }
+        targetElement = targetElement.parentElement;
+      }
+    },
+    true
+  );
+}
+
+function emojiHandler(evt, targetElement) {
+  // console.log(targetElement);
+  const targetClass = targetElement.className.baseVal;
+  const classArray = targetClass.split(" ");
+  const post = {
+    emoji: classArray[1],
+    id: classArray[4],
+  };
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(post),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+
+  fetch("http://localhost:3000/emojis", options)
+    .then((r) => r.text())
+    .then((message) => {
+      console.log(message);
+      loadPosts();
+    });
+}
+
+//emojiCounter logic
+
+// const emojisCollection = document.querySelectorAll(".emojis");
+
+// emojisCollection.forEach((element) => {
+//   element.addEventListener("click", (event) => {
+//     const classArray = event.target.className.split(" ");
+//     const post = {
+//       emoji: classArray[2],
+//       id: classArray[3],
+//     };
+
+//     console.log(post);
+
+//     const options = {
+//       method: "POST",
+//       body: JSON.stringify(post),
+//       headers: {
+//         "content-type": "application/json",
+//       },
+//     };
+
+//     fetch("http://localhost:3000/emojis", options)
+//       .then((r) => r.text())
+//       .then((message) => {
+//         console.log(message);
+//         loadPosts();
+//       });
+//   });
+// });
+
+//EVENT BUBBLING SOLUTION TO EMOJI COUNTER
+
+// let rootElement = document.querySelector(".posts");
+
+// rootElement.addEventListener(
+//   "click",
+//   (event) => {
+//     let targetElement = event.target
+//     let selector = ".emojis";
+//     while(targetElement != null){
+//     if (targetElement.matches(selector)){
+
+//logic for handling the click event of .emoji class
+//       console.log(targetElement);
+//       const targetClass = targetElement.className.baseVal;
+//       const classArray = targetClass.split(" ");
+//       const post = {
+//         emoji: classArray[1],
+//         id: classArray[4],
+//       }
+
+//       const options = {
+//         method: "POST",
+//         body: JSON.stringify(post),
+//         headers: {
+//           "content-type": "application/json",
+//         },
+//       };
+
+//       fetch("http://localhost:3000/emojis", options)
+//       .then((r) => r.text())
+//       .then((message) => {
+//       console.log(message);
+//       loadPosts();
+//       return;
+//     }
+//     targetElement = targetElement.parentElement;
+//   }
+//   }
+
+//   },
+//   true
+// );
+
+// emojis.addEventListener("click", (event) => {
+//   const postId = event.target.parentNode.id.slice(7);
+//   const post = {
+//     emoji: event.target.className.slice(0, -7),
+//     id: postId,
+//   };
+
+//   console.log(post);
+
+//   const options = {
+//     method: "POST",
+//     body: JSON.stringify(post),
+//     headers: {
+//       "content-type": "application/json",
+//     },
+//   };
+
+//   fetch("http://localhost:3000/emojis", options)
+//     .then((r) => r.text())
+//     .then((message) => {
+//       console.log(message);
+//       loadPosts();
+//     });
+// });
