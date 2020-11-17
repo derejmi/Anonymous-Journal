@@ -1,34 +1,22 @@
 [
     {
-        "name": "cheese1",
-        "type": "cheddar"
+        "name": "Dere",
+        "content": "test 1",
+        "date": "2020-11-17T16:23:58.252Z",
+        "likes": 1,
+        "dislikes": 1,
+        "laughs": 1,
+        "comments": [],
+        "id": 0
     },
     {
-        "name": "cheese2",
-        "type": "mozzarella"
-    },
-    {
-        "name": "cheese3",
-        "type": "feta"
-    },
-    {
-        "name": "cheese4",
-        "type": "halumi"
-    },
-    {
-        "name": "cheese4",
-        "type": "halumi"
-    },
-    {
-        "name": "cheese4",
-        "type": "halumi"
-    },
-    {
-        "name": "cheese4",
-        "type": "halumi"
-    },
-    {
-        "name": "cheese4",
-        "type": "halumi"
+        "name": "Dere",
+        "content": "Test 2",
+        "date": "2020-11-17T16:24:08.158Z",
+        "likes": 1,
+        "dislikes": 0,
+        "laughs": 1,
+        "comments": [],
+        "id": 1
     }
 ]
