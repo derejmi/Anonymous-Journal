@@ -10,34 +10,49 @@ loadPosts();
 //On load - load all the posts
 
 function loadPosts() {
-  fetch("http://localhost:3000/cheeses")
+  //blank out everything there before and then add to the page
+  postElement.innerHTML = "";
+  fetch("http://localhost:3000/posts")
     .then((r) => r.json())
     .then((posts) => {
       posts.reverse();
       posts.forEach((post) => {
         const div = document.createElement("div");
-
+        div.className = "allposts";
         //headers to show usernames
         const header = document.createElement("h3");
         header.textContent = post.name;
 
         //post content
         const contents = document.createElement("p");
-        header.textContent = post.content;
+        contents.textContent = post.content;
 
         //date
         const date = document.createElement("small");
-        date.textContent = new Date(post.created);
+        date.textContent = new Date(post.date);
 
         //comment button
-        const comment = document.createElement("button");
-        comment.className = "comment";
-        comment.value = "Comment";
+        // const comment = document.createElement("button");
+        // comment.className = "comment";
+        // comment.value = "Comment";
+
+        const reactionDiv = document.createElement("div");
+
+        const icons = `<i class="far fa-comment"></i>
+        <i class="far fa-thumbs-up"></i>
+        <i class="far fa-thumbs-down"></i>
+        <i class="far fa-laugh-squint"></i>
+        `;
+
+        reactionDiv.className = "icons";
+
+        reactionDiv.innerHTML = icons;
 
         div.appendChild(header);
         div.appendChild(contents);
         div.appendChild(date);
-        div.appendChild(comment);
+        div.appendChild(reactionDiv);
+        // div.appendChild(comment);
 
         postElement.append(div);
       });
@@ -70,9 +85,13 @@ form.addEventListener("submit", (event) => {
     },
   };
 
-  fetch("http://localhost:3000/cheeses", options)
+  fetch("http://localhost:3000/posts", options)
     .then((r) => r.text())
     .then((message) => {
       console.log(message);
+      form.reset();
+      form.style.display = "";
+      spinner.style.display = "none";
+      loadPosts();
     });
 });
