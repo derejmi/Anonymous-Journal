@@ -22,7 +22,9 @@ content.addEventListener("input", (e) => {
   function checkingForLength(currentLength) {
     if (currentLength > 199) {
       alert("Too many characters, you only can write 199 characters");
-      return (content.disabled = true);
+      content.disabled = true;
+      form.reset();
+      content.disabled = false;
     }
   }
   checkingForLength(currentLength);
