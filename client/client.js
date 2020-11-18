@@ -24,7 +24,11 @@ content.addEventListener("input", (e) => {
       alert("Too many characters, you only can write 199 characters");
       content.disabled = true;
       form.reset();
+
       content.disabled = false;
+
+     
+
     }
   }
   checkingForLength(currentLength);
@@ -53,7 +57,9 @@ function loadPosts() {
 
         //date
         const date = document.createElement("small");
-        date.textContent = new Date(post.date);
+        // const longDate = new Date(post.date.toString().slice(0,21));
+        const longDate = new Date(post.date);
+        date.textContent = longDate;
 
         const reactionDiv = document.createElement("div");
 
@@ -124,8 +130,9 @@ form.addEventListener("submit", (event) => {
     });
 });
 
+//EVENT BUBBLING FOR DYNAMIC DOM MANIPULATION
 addCustomEventListener(".emojis", "click", emojiHandler);
-
+addCustomEventListener(".fa-comment", "click", commentClickHandler);
 //Generic function to handle event listeners of future elements
 
 function addCustomEventListener(selector, event, handler) {
@@ -170,6 +177,15 @@ function emojiHandler(evt, targetElement) {
       console.log(message);
       loadPosts();
     });
+}
+
+function commentClickHandler(evt, targetElement) {
+  const commentForm = document.createElement("form");
+  const inputArea = document.createElement("input");
+  inputArea.type = "text-area";
+  inputArea.style;
+  commentForm.appendChild(inputArea);
+  targetElement.parentNode.parentNode.append(commentForm);
 }
 
 //emojiCounter logic
