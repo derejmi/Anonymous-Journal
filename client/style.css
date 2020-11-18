@@ -53,3 +53,7 @@
   left: 20%;
   top: 360px;
 }
+
+.error-message {
+  color: red;
+}
