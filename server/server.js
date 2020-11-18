@@ -134,13 +134,13 @@ server.post("/emojis", (req, res) => {
     } else {
       const postsData = JSON.parse(data);
       if (emoji === "fa-thumbs-up") {
-        postsData[id].likes++;
+        postsData[id - 1].likes++;
       }
       if (emoji === "fa-thumbs-down") {
-        postsData[id].dislikes++;
+        postsData[id - 1].dislikes++;
       }
       if (emoji === "fa-laugh-squint") {
-        postsData[id].laughs++;
+        postsData[id - 1].laughs++;
       }
 
       fs.writeFile(
