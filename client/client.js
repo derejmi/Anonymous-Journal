@@ -6,7 +6,7 @@ const content = document.querySelector("#content");
 const counterEle = document.createElement("p");
 
 const commentForm = document.createElement("form");
- const inputArea = document.createElement("input");
+const inputArea = document.createElement("input");
 
 //On-loading hide spinner
 spinner.style.display = "none";
@@ -29,9 +29,6 @@ content.addEventListener("input", (e) => {
       form.reset();
 
       content.disabled = false;
-
-     
-
     }
   }
   checkingForLength(currentLength);
@@ -60,7 +57,6 @@ function loadPosts() {
 
         //date
         const date = document.createElement("small");
-        // const longDate = new Date(post.date.toString().slice(0,21));
         const longDate = new Date(post.date);
         date.textContent = longDate;
 
@@ -70,14 +66,10 @@ function loadPosts() {
         const newImg = document.createElement("img");
         newImg.src = post.giph;
         newImg.style.display = "block";
-        newImg.style.margin ="0 auto";
-        newImg.alt = ""
-        // const icons = `<i class="far fa-comment"></i>
-        // <i class="far fa-thumbs-up emojis ${post.id}"> </i>
-        // <i class="far fa-thumbs-down emojis ${post.id}"></i>
-        // <i class="far fa-laugh-squint emojis ${post.id}"></i>
-        // `;
+        newImg.style.margin = "0 auto";
+        newImg.alt = "";
 
+        //icons
         const commentIcon = `<i class="far fa-comment"></i>`;
         const likeIcon = `<div><i class="far fa-thumbs-up emojis ${post.id}"></i><span>${post.likes}</span></div>`;
         const dislikeIcon = `<div><i class="far fa-thumbs-down emojis ${post.id}"></i><span>${post.dislikes}</span></div>`;
@@ -85,22 +77,29 @@ function loadPosts() {
 
         reactionDiv.className = `icons`;
 
-        // likeIcon.textContent = post["likes"].toString();
-        // dislikeIcon.textContent = post["dislikes"].toString();
-
         reactionDiv.innerHTML =
           commentIcon + likeIcon + dislikeIcon + laughIcon;
 
-        
+        //comments
 
+        const commentHeader = document.createElement("h2");
+        commentHeader.textContent = "Comments";
+        const commentsArray = post.comments;
+        const commentDiv = document.createElement("div");
+        commentDiv.appendChild(commentHeader);
+        commentsArray.forEach((elem) => {
+          const p = document.createElement("p");
+          p.textContent = elem;
+          commentDiv.appendChild(p);
+        });
 
+        //appending
         div.appendChild(header);
         div.appendChild(contents);
         div.appendChild(newImg);
         div.appendChild(date);
         div.appendChild(reactionDiv);
-        
-        // div.appendChild(comment);
+        div.appendChild(commentDiv);
 
         postElement.append(div);
       });
@@ -116,16 +115,13 @@ form.addEventListener("submit", (event) => {
   const content = event.target.content.value;
   const gif = event.target.giphy.value;
 
-
-  
   const post = {
     name,
     content,
-    gif
+    gif,
   };
 
-  console.log(post)
-
+  console.log(post);
 
   //(Hides form)
   form.style.display = "none";
@@ -154,6 +150,7 @@ form.addEventListener("submit", (event) => {
 //EVENT BUBBLING FOR DYNAMIC DOM MANIPULATION
 addCustomEventListener(".emojis", "click", emojiHandler);
 addCustomEventListener(".fa-comment", "click", commentClickHandler);
+addCustomEventListener(".comment-input", "submit", commentSubmitHandler);
 //Generic function to handle event listeners of future elements
 
 function addCustomEventListener(selector, event, handler) {
@@ -203,23 +200,53 @@ function emojiHandler(evt, targetElement) {
 function commentClickHandler(evt, targetElement) {
   const commentForm = document.createElement("form");
   const inputArea = document.createElement("input");
+  // const commentButton = document.createElement("button");
   inputArea.type = "text-area";
-  inputArea.style;
+  commentForm.className = "comment-input";
+  inputArea.id = "comment";
+  inputArea.name = "comment";
   commentForm.appendChild(inputArea);
   targetElement.parentNode.parentNode.append(commentForm);
 }
 
-inputArea.addEventListener("keyup",function(event) {
-  // Number 13 is the "Enter" key on the keyboard
- const somePost = document.querySelector(".allposts");
- const comment = event.target.value
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-  somePost.append(comment)
+function commentSubmitHandler(evt, targetElement) {
+  debugger;
+  evt.preventDefault();
+  const idName = targetElement.parentNode.id;
+  const id = idName.slice(5);
+  console.log(id);
+  const comment = targetElement.comment.value;
+  const postComment = {
+    id,
+    comment,
+  };
+  console.log(comment);
+  const options = {
+    method: "POST",
+    body: JSON.stringify(postComment),
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+  fetch("http://localhost:3000/comments", options)
+    .then((r) => r.text())
+    .then((message) => {
+      console.log(message);
+      form.reset();
+      loadPosts();
+    });
 }
-    event.preventDefault();
-  });
 
+// inputArea.addEventListener("keyup", function (event) {
+//   // Number 13 is the "Enter" key on the keyboard
+//   const somePost = document.querySelector(".allposts");
+//   const comment = event.target.value;
+//   if (event.keyCode === 13) {
+//     // Cancel the default action, if needed
+//     somePost.append(comment);
+//   }
+//   event.preventDefault();
+// });
 
 //emojiCounter logic
 
