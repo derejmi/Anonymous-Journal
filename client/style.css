@@ -36,7 +36,8 @@
   background: #f2f2f2;
   padding: 10px;
   margin: 10px;
-  word-wrap:break-word;
+  word-wrap: break-word;
+  position: relative;
 }
 
 .icons {
@@ -45,4 +46,9 @@
   justify-content: space-around;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+#comment {
+  position: absolute;
+  left: 20%;
 }
