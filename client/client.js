@@ -5,6 +5,9 @@ const postElement = document.querySelector(".posts");
 const content = document.querySelector("#content");
 const counterEle = document.createElement("p");
 
+const commentForm = document.createElement("form");
+ const inputArea = document.createElement("input");
+
 //On-loading hide spinner
 spinner.style.display = "none";
 
@@ -68,7 +71,7 @@ function loadPosts() {
         newImg.src = post.giph;
         newImg.style.display = "block";
         newImg.style.margin ="0 auto";
-
+        newImg.alt = ""
         // const icons = `<i class="far fa-comment"></i>
         // <i class="far fa-thumbs-up emojis ${post.id}"> </i>
         // <i class="far fa-thumbs-down emojis ${post.id}"></i>
@@ -87,6 +90,9 @@ function loadPosts() {
 
         reactionDiv.innerHTML =
           commentIcon + likeIcon + dislikeIcon + laughIcon;
+
+        
+
 
         div.appendChild(header);
         div.appendChild(contents);
@@ -202,6 +208,18 @@ function commentClickHandler(evt, targetElement) {
   commentForm.appendChild(inputArea);
   targetElement.parentNode.parentNode.append(commentForm);
 }
+
+inputArea.addEventListener("keyup",function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+ const somePost = document.querySelector(".allposts");
+ const comment = event.target.value
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+  somePost.append(comment)
+}
+    event.preventDefault();
+  });
+
 
 //emojiCounter logic
 
