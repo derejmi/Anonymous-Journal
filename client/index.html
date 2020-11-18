@@ -18,7 +18,7 @@
       data-auto-a11y="true"
     ></script>
     <script src="client.js" defer></script>
-    <script src="giphy.js"></script>
+    <script src="giphy.js" defer></script>
   </head>
   <body>
     <header><h1 class="header-title">Title &nbsp;👀 🤐</h1></header>
@@ -34,8 +34,14 @@
           id="content"
           name="content"
         ></textarea>
+        <label for="giphy">Gif</label>
+        <input class="gif" type="text" id="giphy" name="giphy"/>
+        <div contentEditable="true" id="input"></div>
         <button class="button-primary">Submit Post! 🍿</button>
       </form>
+      <button onclick="sendApiRequest()" class="btn btn-primary btn-sm">
+  add giphy ❤️️
+</button>
       <div class="spinner">
         <img src="assets/image1.gif" alt="" />
       </div>

@@ -1,7 +1,9 @@
 
 function sendApiRequest(){
     
-    let userInput = document.getElementById("input").value
+    
+    let userInput = document.getElementById("input").textContent
+    let gifForm = document.getElementById("giphy")
     
     console.log(userInput)
 
@@ -17,7 +19,8 @@ function sendApiRequest(){
     let imgPath = json.data[0].images.fixed_height.url
     let img = document.createElement('img')
     img.setAttribute("src", imgPath)
-    document.body.appendChild(img)
+    input.append(img)
+    gifForm.value = imgPath
 })
 
 

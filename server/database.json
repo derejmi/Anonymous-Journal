@@ -28,5 +28,26 @@
         "laughs": 1,
         "comments": [],
         "id": 2
+    },
+    {
+        "name": "cat1",
+        "content": "what's up",
+        "date": "2020-11-18T11:13:33.045Z",
+        "likes": 0,
+        "dislikes": 0,
+        "laughs": 0,
+        "comments": [],
+        "id": 3
+    },
+    {
+        "name": "O123",
+        "content": "asbahsjfhjsa",
+        "giph": "https://media3.giphy.com/media/xTiTnrliW65rlwud8I/200.gif?cid=56a6fade6zjlgxjejhsqbhi3is007fy5dcmf5q9x9hdtzzg7&rid=200.gif",
+        "date": "2020-11-18T11:16:52.944Z",
+        "likes": 0,
+        "dislikes": 0,
+        "laughs": 0,
+        "comments": [],
+        "id": 4
     }
 ]
