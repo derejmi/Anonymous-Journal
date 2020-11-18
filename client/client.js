@@ -63,6 +63,12 @@ function loadPosts() {
 
         const reactionDiv = document.createElement("div");
 
+        //image
+        const newImg = document.createElement("img");
+        newImg.src = post.giph;
+        newImg.style.display = "block";
+        newImg.style.margin ="0 auto";
+
         // const icons = `<i class="far fa-comment"></i>
         // <i class="far fa-thumbs-up emojis ${post.id}"> </i>
         // <i class="far fa-thumbs-down emojis ${post.id}"></i>
@@ -84,8 +90,10 @@ function loadPosts() {
 
         div.appendChild(header);
         div.appendChild(contents);
+        div.appendChild(newImg);
         div.appendChild(date);
         div.appendChild(reactionDiv);
+        
         // div.appendChild(comment);
 
         postElement.append(div);
@@ -100,11 +108,18 @@ form.addEventListener("submit", (event) => {
 
   const name = event.target.name.value;
   const content = event.target.content.value;
+  const gif = event.target.giphy.value;
 
+
+  
   const post = {
     name,
     content,
+    gif
   };
+
+  console.log(post)
+
 
   //(Hides form)
   form.style.display = "none";

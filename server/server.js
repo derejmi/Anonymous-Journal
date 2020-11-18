@@ -79,6 +79,7 @@ server.post("/posts", (req, res) => {
     const post = {
       name: incomingRequest.name.toString(),
       content: incomingRequest.content.toString(),
+      giph: incomingRequest.gif.toString(),
       date: new Date(),
       likes: 0,
       dislikes: 0,
