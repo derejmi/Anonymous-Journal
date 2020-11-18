@@ -120,6 +120,8 @@ form.addEventListener("submit", (event) => {
   const gif = event.target.giphy.value;
 
   if (name && content) {
+    errorMessage.style.display = "none";
+
     const post = {
       name,
       content,
