@@ -95,7 +95,7 @@ server.post("/posts", (req, res) => {
       } else {
         //parse JSON string to JSON object
         const postsData = JSON.parse(data);
-        post.id = postsData.length;
+        post.id = postsData.length + 1;
         postsData.push(post);
 
         fs.writeFile(
@@ -154,6 +154,31 @@ server.post("/emojis", (req, res) => {
       );
     }
     res.send([emoji, id]);
+  });
+});
+
+server.post("/comments", (req, res) => {
+  const incomingRequest = req.body;
+  const comment = incomingRequest.comment;
+  const id = incomingRequest.id;
+
+  fs.readFile("./database.json", "utf8", (err, data) => {
+    if (err) {
+      console.log(`Error reading file from disk: ${err}`);
+    } else {
+      const postsData = JSON.parse(data);
+      postsData[id - 1].comments.push(comment);
+      fs.writeFile(
+        "./database.json",
+        JSON.stringify(postsData, null, 4),
+        (err) => {
+          if (err) {
+            console.log(`Error writing file: ${err}`);
+          }
+        }
+      );
+    }
+    res.send("Hello");
   });
 });
 
