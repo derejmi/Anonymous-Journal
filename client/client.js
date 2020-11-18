@@ -24,7 +24,11 @@ content.addEventListener("input", (e) => {
       alert("Too many characters, you only can write 199 characters");
       content.disabled = true;
       form.reset();
-      content.disabed = false;
+
+      content.disabled = false;
+
+     
+
     }
   }
   checkingForLength(currentLength);
