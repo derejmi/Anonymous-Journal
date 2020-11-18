@@ -3,16 +3,19 @@ const form = document.querySelector(".post-form");
 const spinner = document.querySelector(".spinner");
 const postElement = document.querySelector(".posts");
 const content = document.querySelector("#content");
-const counterEle = document.createElement("p");
-
-const commentForm = document.createElement("form");
+const errorMessage = document.querySelector(".error-message");
 const inputArea = document.querySelector("#input");
 
-//On-loading hide spinner
-spinner.style.display = "none";
+//element creation
+const counterEle = document.createElement("p");
+const commentForm = document.createElement("form");
 
-loadPosts();
+//On-loading hide spinner and the error message area
+spinner.style.display = "none";
+errorMessage.style.display = "none";
+
 //On load - load all the posts
+loadPosts();
 
 //counting the characters
 content.addEventListener("input", (e) => {
@@ -116,37 +119,47 @@ form.addEventListener("submit", (event) => {
   const content = event.target.content.value;
   const gif = event.target.giphy.value;
 
-  const post = {
-    name,
-    content,
-    gif,
-  };
+  if (name && content) {
+    const post = {
+      name,
+      content,
+      gif,
+    };
 
-  console.log(post);
-  //resets div
-  inputArea.innerHTML = "";
-  //(Hides form)
-  form.style.display = "none";
-  //(shows spinner)
-  spinner.style.display = "";
+    console.log(post);
+    //resets div
+    inputArea.innerHTML = "";
+    //(Hides form)
+    form.style.display = "none";
+    //(shows spinner)
+    spinner.style.display = "";
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(post),
-    headers: {
-      "content-type": "application/json",
-    },
-  };
+    const options = {
+      method: "POST",
+      body: JSON.stringify(post),
+      headers: {
+        "content-type": "application/json",
+      },
+    };
 
-  fetch("http://localhost:3000/posts", options)
-    .then((r) => r.text())
-    .then((message) => {
-      console.log(message);
-      form.reset();
-      form.style.display = "";
-      spinner.style.display = "none";
-      loadPosts();
-    });
+    fetch("http://localhost:3000/posts", options)
+      .then((r) => r.text())
+      .then((message) => {
+        console.log(message);
+        form.reset();
+        form.style.display = "";
+        spinner.style.display = "none";
+        loadPosts();
+      })
+      .catch((err) => {
+        errorMessage.style.display = "";
+        errorMessage.textContent = err;
+        spinner.style.display = "none";
+      });
+  } else {
+    errorMessage.textContent = "Name and post content required!";
+    errorMessage.style.display = "";
+  }
 });
 
 //EVENT BUBBLING FOR DYNAMIC DOM MANIPULATION
@@ -194,7 +207,7 @@ function emojiHandler(evt, targetElement) {
   };
 
   fetch("http://localhost:3000/emojis", options)
-    .then((r) => r.text())
+    .then((r) => r.json())
     .then((message) => {
       console.log(message);
       loadPosts();
@@ -218,9 +231,9 @@ function commentClickHandler(evt, targetElement) {
 
 //comment form for dynamic event listener
 function commentSubmitHandler(evt, targetElement) {
-  debugger;
+  // debugger;
   evt.preventDefault();
-  const idName = targetElement.parentNode.id;
+  const idName = targetElement.parentNode.parentNode.id;
   const id = idName.slice(5);
   console.log(id);
   const comment = targetElement.comment.value;
