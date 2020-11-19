@@ -34,15 +34,18 @@ describe('index.html', () => {
     })
 
         it('has the correct content', async () => {
-            const headerh1 = await page.$('header h1');
-            const headerText = await headerh1.evaluate(el => el.textContent, headerh1);
-            expect(headerText).to.equal('Title  👀 🤐');
+            const headerh2 = await page.$('header h2');
+            const headerText = await headerh2.evaluate(el => el.textContent, headerh2);
+            expect(headerText).to.equal('titlepage');
+        })
+        
+        it('has the correct content', async () => {
+            const headerp = await page.$('header p');
+            const headerText = await headerp.evaluate(el => el.textContent, headerp);
+            expect(headerText).to.equal('post anonymously...');
         })
       })
 
-    
-    
-    
       after(async () => {
         await browser.close();
     });
