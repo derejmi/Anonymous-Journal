@@ -1,3 +1,4 @@
+/* RESET */
 html,
 header,
 body,
@@ -22,6 +23,7 @@ svg {
 
 body {
   border-top: 5px solid #42b6f3;
+  background-image: url("assets/greek-vase.png");
   padding: 50px 0;
   font: 300 18px/1.5 Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #818181;
@@ -71,6 +73,11 @@ blockquote {
   width: 50%;
   margin: 0 auto;
 }
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
 form > input,
 textarea {
@@ -88,32 +95,29 @@ form > label {
 .giphy-div {
   border: 1px solid #42b6f3;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .submit-button {
   /* display: block; */
   /* margin: 0 auto; */
   position: relative;
-  left: 60%;
+  left: 20%;
+  top: 25px;
   padding: 10px;
   font: 13px;
+  font-weight: bold;
 }
 
 .gif-button {
-  position: absolute;
-  top: 67.5%;
-  left: 30%;
+  position: relative;
+  bottom: 80px;
+  left: 37%;
+  font-weight: bold;
+  padding: 10px;
 }
 .spinner {
   text-align: center;
-}
-
-.apple {
-  display: block;
-  position: absolute;
-  top: 225px;
-  right: 350;
 }
 
 .posts {
@@ -126,7 +130,7 @@ form > label {
 }
 
 .allposts {
-  background: #f2f2f2;
+  border-top: 2px solid #42b6f3;
   padding: 10px;
   margin: 10px;
   width: 100%;
@@ -140,15 +144,68 @@ form > label {
   justify-content: space-around;
   margin: 0 auto;
   margin-top: 20px;
+  margin-bottom: 50px;
+}
+svg {
+  margin-right: 7px;
 }
 
 #comment {
   position: absolute;
   left: 20%;
-  top: 360px;
+  top: 390px;
 }
 
-.error-message {
-  color: red;
-  margin-bottom: 10px;
+h2 {
+  font-size: 26px;
+}
+
+h1:hover {
+  color: #42b6f3;
+}
+
+small {
+  font-size: 13px;
+}
+
+svg:hover {
+  background-color: white;
+  color: #42b6f3;
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+@media only screen and (min-width: 500px) and (max-width: 749px) {
+  main {
+    max-width: 440px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  header {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .header {
+    display: block;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .submit-button {
+    /* display: block; */
+    /* margin: 0 auto; */
+    position: relative;
+    left: 11%;
+    top: 25px;
+    padding: 10px;
+    font: 13px;
+  }
+
+  .gif-button {
+    position: relative;
+    bottom: 80px;
+    left: 33%;
+    padding: 10px;
+  }
 }
