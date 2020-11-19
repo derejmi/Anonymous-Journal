@@ -1,3 +1,4 @@
+/* RESET */
 html,
 header,
 body,
@@ -75,6 +76,7 @@ blockquote {
 .error-message {
   color: red;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 form > input,
@@ -93,7 +95,7 @@ form > label {
 .giphy-div {
   border: 1px solid #42b6f3;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .submit-button {
@@ -104,12 +106,14 @@ form > label {
   top: 25px;
   padding: 10px;
   font: 13px;
+  font-weight: bold;
 }
 
 .gif-button {
   position: relative;
   bottom: 80px;
   left: 37%;
+  font-weight: bold;
   padding: 10px;
 }
 .spinner {
