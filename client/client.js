@@ -159,7 +159,7 @@ form.addEventListener("submit", (event) => {
         spinner.style.display = "none";
       });
   } else {
-    errorMessage.textContent = "Name and post content required!";
+    errorMessage.textContent = "Title and post content required!";
     errorMessage.style.display = "";
   }
 });
