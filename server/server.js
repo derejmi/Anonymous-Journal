@@ -8,48 +8,13 @@ server.use(bodyParser.json());
 
 //To read data from the post database file asynchronously
 const fs = require("fs");
-// fs.readFile("./database.json", "utf8", (err, data) => {
-//   if (err) {
-//     console.log(`Error reading file from disk: ${err}`);
-//   } else {
-//     const databases = JSON.parse(data);
-//     databases.push({
-//       name: "cheese4",
-//       type: "halumi",
-//     });
-
-//     fs.writeFile(
-//       "./database.json",
-//       JSON.stringify(databases, null, 4),
-//       (err) => {
-//         if (err) {
-//           console.log(`Error writing file: ${err}`);
-//         }
-//       }
-//     );
-//   }
-// });
 
 const updatedData = require("./database.json");
-//const postData =fs.readFile('./database.json', 'utf8', (err, data) => {
-//if (err) {
-// console.log(`Error reading file from disk: ${err}`);
-//const database = JSON.parse(data) // parse JSON string into JSON object
-// database.push ({
-//name: 'cheese4',
-////type: 'halumi'
-// });
 
 //running server
 server.listen(3000, () => console.log("Server being departed!"));
 
-//checking if server works with dummy results
-//const cheese = ['brie', 'mozzarela', 'cheddar']
-// server.get("/cheeses", (req, res) => {
-//   res.json(updatedData);
-// });
-
-//GET ROUTE WITH ASYNC FILE READING
+//POSTS - GET ROUTE
 
 server.get("/posts", (req, res) => {
   fs.readFile("./database.json", "utf8", (err, data) => {
@@ -71,7 +36,7 @@ function isValidPost(post) {
   );
 }
 
-//POST ROUTE -- WORKING!
+//POSTS  - POST ROUTE
 
 server.post("/posts", (req, res) => {
   const incomingRequest = req.body;
@@ -85,7 +50,6 @@ server.post("/posts", (req, res) => {
       dislikes: 0,
       laughs: 0,
       comments: [],
-      //id : database.length
     };
 
     //read the file
@@ -107,19 +71,13 @@ server.post("/posts", (req, res) => {
             }
           }
         );
-
-        res.send("Hi");
+        res.status(201).send(post);
       }
     });
+  } else {
+    res.status(422).send("Name and content required!");
   }
 });
-
-// server.post("/cheeses", (req, res) => {
-//   //   const cheeseData = req.body;
-//   //   const newCheese = { id: cheese.length + 1, ...cheeseData };
-//   //   cheese.push(newCheese);
-//   res.send("cheese");
-// });
 
 //POST ROUTE - EMOJIS
 
@@ -134,13 +92,13 @@ server.post("/emojis", (req, res) => {
     } else {
       const postsData = JSON.parse(data);
       if (emoji === "fa-thumbs-up") {
-        postsData[id].likes++;
+        postsData[id - 1].likes++;
       }
       if (emoji === "fa-thumbs-down") {
-        postsData[id].dislikes++;
+        postsData[id - 1].dislikes++;
       }
       if (emoji === "fa-laugh-squint") {
-        postsData[id].laughs++;
+        postsData[id - 1].laughs++;
       }
 
       fs.writeFile(
@@ -153,7 +111,7 @@ server.post("/emojis", (req, res) => {
         }
       );
     }
-    res.send([emoji, id]);
+    res.status(201).json([emoji, id]);
   });
 });
 
@@ -178,7 +136,7 @@ server.post("/comments", (req, res) => {
         }
       );
     }
-    res.send("Hello");
+    res.status(201).send(comment);
   });
 });
 
