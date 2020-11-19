@@ -48,8 +48,8 @@ function loadPosts() {
         const div = document.createElement("div");
         div.className = "allposts";
         div.id = `$Post ${post.id}`;
-        //headers to show usernames
-        const header = document.createElement("h3");
+        //headers to show title names
+        const header = document.createElement("h1");
         header.textContent = post.name;
 
         //post content
