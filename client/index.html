@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title - Post Anonymously 👀</title>
+    <title>Title - Post Anonymously</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
@@ -13,6 +13,7 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
     <script
       src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
       data-auto-a11y="true"
@@ -21,7 +22,7 @@
     <script defer src="giphy.js"></script>
   </head>
   <body>
-    <header>
+    <header class="header">
       <h2>title<span>page</span></h2>
       <p>post <span>anonymously...</span></p>
     </header>
@@ -33,7 +34,7 @@
 
       <form class="post-form">
         <div class="error-message"></div>
-        <label for="name">Name</label>
+        <label for="name">Title</label>
         <input class="u-full-width" type="text" id="name" name="name" />
         <label for="content">Post</label>
         <textarea
@@ -53,7 +54,7 @@
         <button class="button-primary submit-button">Submit Post! 🍿</button>
       </form>
       <button onclick="sendApiRequest()" class="button-primary gif-button">
-        add giphy ❤️️
+        Add giphy ❤️️
       </button>
       <div class="spinner">
         <img src="assets/image1.gif" alt="" />
