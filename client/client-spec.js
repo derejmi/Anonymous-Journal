@@ -44,7 +44,55 @@ describe('index.html', () => {
             const headerText = await headerp.evaluate(el => el.textContent, headerp);
             expect(headerText).to.equal('post anonymously...');
         })
-      })
+      
+    describe('main',() => {
+        let main;
+        it('exists', async () => {
+            main = await page.$('main');
+            expect(main).to.exist;
+        })
+    })
+    it('has the correct content', async () => {
+        const mainblockquote = await page.$('main blockquote');
+        const mainText = await mainblockquote.evaluate(el => el.textContent, mainblockquote);
+        expect(mainText).to.equal('\n        anonymously post journal entries, complete with gifs, emojis and vibes\n      ');
+    })
+    it('form exists', async () => {
+        const form = await page.$('form')
+        expect(form).to.exist;
+    })
+    
+    it('has an id of "name"', async () => {
+        let nameInput = await page.$('form input#name');
+        expect(nameInput).to.exist;
+            });
+    it('has an id of cont', async() => {
+    let textArea = await page.$('form textarea#content')
+    expect(textArea).to.exist;
+    });
+    it('has an id of giphy', async() => {
+        let giphyInput = await page.$('form input#giphy')
+        expect(giphyInput).to.exist;
+        })
+    it('has a class of button-primary submit-button ', async() => {
+            let button = await page.$('form')
+            expect(button).to.exist;
+            })
+        
+    it('it has a class of gif-button', async () => {
+                let button1 = await page.$('form')
+                expect(button1).to.exist;
+            
+        });
+    it('it has a image', async () => {
+            let image = await page.$('form')
+            expect(image).to.exist;
+        
+    });
+ 
+});
+    
+    
 
       after(async () => {
         await browser.close();
