@@ -1,8 +1,10 @@
 const request = require('supertest');
-const server = require ('../server');
+const server = require ('../server/server.js');
 const expect = require('chai').expect;
 const chaiHttp = require("chai-http");
  let chai = require('chai');
+ const database = require("../server/database.json")
+ const fs = require('fs')
  
 const { post, response } = require('../server/server');
 
@@ -64,37 +66,52 @@ describe ("POST /post methods",() => {
             content: "im posting",
             gif: ""
 
-        };
-        chai.request(server)
-        .post("/posts")
-        .send(incomingRequest)
-        .end(function (err, res) {
-          expect(res).to.have.status(500)
-          done()
-        });
- 
 
-        
-        
-        
-
-
-    })
-    it("should get /comments ",(done)=>{
-        const commente = {
-           comment: "hi omg"
 
         };
-        chai.request(server)
-        .post("/comments")
-        .send(commente)
-        .end(function (err, res) {
-          expect(res).to.have.status(201)
-          done()
-        });
+        const cam = { 
+        method: "POST",
+        body: JSON.stringify(incomingRequest),
+        headers: {
+          "content-type": "application/json",
+        },
+      };
+      
 
+        
+            chai.request(server)
+            .post("/posts")
+            .send(cam)
+            .end(function (err, res) {
+              expect(res).to.have.status(422)
+              done()
+            });
+     
+    
+            
+            
+            
+    
+    
+      
+        it("should get /comments ",(done)=>{
+            const commente = {
+               comment: "hi omg"
+    
+            };
+            chai.request(server)
+            .post("/comments")
+            .send(commente)
+            .end(function (err, res) {
+              expect(res).to.have.status(201)
+              done()
+            });
+    
+          })
 
-})
+       
+        
+
 // it("should get /emoji ",(done)=>{
 //     const commente = {
 //        comment: "hi omg"
@@ -110,5 +127,8 @@ describe ("POST /post methods",() => {
 
 
 
+
+
 // 
+})
 })
