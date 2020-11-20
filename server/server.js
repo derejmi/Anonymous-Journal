@@ -10,9 +10,10 @@ server.use(bodyParser.json());
 const fs = require("fs");
 
 const updatedData = require("./database.json");
+const port = process.env.PORT || 3000; // if there is no PORT env variable, 3000 will be used
 
 //running server
-server.listen(3000, () => console.log("Server being departed!"));
+server.listen(port, () => console.log("Server being departed!"));
 
 //POSTS - GET ROUTE
 
