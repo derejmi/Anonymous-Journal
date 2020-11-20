@@ -1,32 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title - Post Anonymously 👀 </title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="client.js" defer></script>
-</head>
-<body>
-    <header> <h1 class="header-title">Title &nbsp;👀 🤐 </h1></header>
-<main>
-<form class="post-form">
-    <div class="error-message"></div>
-    <label for ="name">Name</label>
-    <input class="u-full-width" type="text" id="name" name="name">
- <label for="content">Post</label>
- <textarea class="u-full-width" type="text" id="content" name="content"></textarea>
-     <button class="button-primary"> Submit Post! 🍿 </button>
-     <div class="apple">
-     <button class="btn btn-primary btn-sm">add giphy ❤️️ </button>
-     </div>
-</form>
-<div class="spinner">
-    <img src="assets/image1.gif" alt=""/>
-</div>
-<div class="posts"></div>
-</main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title - Post Anonymously</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+    <script defer src="client.js"></script>
+    <script defer src="giphy.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h2>title<span>page</span></h2>
+      <p>post <span>anonymously...</span></p>
+    </header>
+
+    <main>
+      <blockquote>
+        anonymously post journal entries, complete with gifs, emojis and vibes
+      </blockquote>
+
+      <form class="post-form">
+        <div class="error-message"></div>
+        <label for="name">Title</label>
+        <input class="u-full-width" type="text" id="name" name="name" />
+        <label for="content">Post</label>
+        <textarea
+          class="u-full-width"
+          type="text"
+          id="content"
+          name="content"
+        ></textarea>
+        <label for="giphy">Gif URL</label>
+        <input class="gif u-full-width" type="text" id="giphy" name="giphy" />
+        <div
+          class="giphy-div"
+          contenteditable="true"
+          data-placeholder="(Search GIF...)"
+          id="input"
+        ></div>
+        <button class="button-primary submit-button">Submit Post! 🍿</button>
+      </form>
+      <button onclick="sendApiRequest()" class="button-primary gif-button">
+        Add giphy ❤️️
+      </button>
+      <div class="spinner">
+        <img src="assets/image1.gif" alt="" />
+      </div>
+      <div class="posts"></div>
+    </main>
+  </body>
 </html>
+
+<!-- <div class="apple">
+<input type="text" id="input" />
+
+<button onclick="sendApiRequest()" class="btn btn-primary btn-sm">
+  add giphy ❤️️
+</button>
+</div> -->
