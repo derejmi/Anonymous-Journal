@@ -262,3 +262,4 @@ function commentSubmitHandler(evt, targetElement) {
       console.warn(err);
     });
 }
+

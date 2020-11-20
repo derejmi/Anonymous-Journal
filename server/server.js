@@ -12,6 +12,40 @@ const fs = require("fs");
 const updatedData = require("./database.json");
 const port = process.env.PORT || 3000; // if there is no PORT env variable, 3000 will be used
 
+//To read data from the post database file asynchronously 
+const fs = require('fs')
+ fs.readFile('./database.json', 'utf8', (err, data) => {
+
+    if (err) {
+        console.log(`Error reading file from disk: ${err}`);
+    } else {
+        const databases = JSON.parse(data);
+        databases.push({
+            name: 'cheese4',
+            type: 'halumi'
+        });
+
+        fs.writeFile('./database.json', JSON.stringify(databases, null, 4), (err) => {
+            if (err) {
+                console.log(`Error writing file: ${err}`);
+            }
+        });
+    }
+
+});
+
+//const postData =fs.readFile('./database.json', 'utf8', (err, data) => {
+    //if (err) {
+       // console.log(`Error reading file from disk: ${err}`);
+    //const database = JSON.parse(data) // parse JSON string into JSON object
+   // database.push ({
+        //name: 'cheese4',
+        ////type: 'halumi'
+   // });
+
+
+
+
 //running server
 server.listen(port, () => console.log("Server being departed!"));
 
