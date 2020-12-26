@@ -7,13 +7,13 @@ const bodyParser = require("body-parser");
 server.use(bodyParser.json());
 
 //To read data from the post database file asynchronously
-// const fs = require("fs");
+const fs = require("fs");
 
 const updatedData = require("./database.json");
 const port = process.env.PORT || 3000; // if there is no PORT env variable, 3000 will be used
 
 //To read data from the post database file asynchronously
-const fs = require("fs");
+// const fs = require("fs");
 fs.readFile("./database.json", "utf8", (err, data) => {
   if (err) {
     console.log(`Error reading file from disk: ${err}`);
