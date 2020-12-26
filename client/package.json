@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "client.js",
-  "test":"test.js",
-  
+  "test": "test.js",
   "scripts": {
     "test": "mocha --reporter=nyan --timeout 10000",
     "coverage": "nyc --reporter=html --reporter=text mocha --exit"

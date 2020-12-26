@@ -1,28 +1,46 @@
 [
-    {
-        "name": "O123",
-        "content": "asbahsjfhjsa",
-        "giph": "https://media3.giphy.com/media/xTiTnrliW65rlwud8I/200.gif?cid=56a6fade6zjlgxjejhsqbhi3is007fy5dcmf5q9x9hdtzzg7&rid=200.gif",
-        "date": "2020-11-18T11:16:52.944Z",
-        "likes": 1,
-        "dislikes": 0,
-        "laughs": 2,
-        "comments": [
-            "Hi"
-        ],
-        "id": 1
-    },
-    {
-        "name": "Bana1",
-        "content": "Hello, bana",
-        "giph": "https://media3.giphy.com/media/xTiTnrliW65rlwud8I/200.gif?cid=56a6fade6zjlgxjejhsqbhi3is007fy5dcmf5q9x9hdtzzg7&rid=200.gif",
-        "date": "2020-11-18T15:05:32.148Z",
-        "likes": 0,
-        "dislikes": 0,
-        "laughs": 0,
-        "comments": [
-            "Cool Cake"
-        ],
-        "id": 2
-    }
+  {
+    "name": "First",
+    "content": "Hey all excited to try this new blogging site out lol ",
+    "giph": "https://media4.giphy.com/media/hj8eOHrXqoLntsCyWz/200.gif?cid=56a6fadee3zyumcyszpawuav6z5nqn4ho33sr0kf5040f3na&rid=200.gif",
+    "date": "2020-12-26T12:42:01.031Z",
+    "likes": 2,
+    "dislikes": 0,
+    "laughs": 0,
+    "comments": ["Hiiiii", "Welcome!"],
+    "id": 3
+  },
+  {
+    "name": "Hellooooo",
+    "content": "This is super cool - super stoked to use",
+    "giph": "https://media2.giphy.com/media/CAxbo8KC2A0y4/200.gif?cid=56a6fadej29uskd0sl3qiflyblh6zoamdd6ovc4b21xdmz89&rid=200.gif",
+    "date": "2020-12-26T12:42:58.585Z",
+    "likes": 1,
+    "dislikes": 0,
+    "laughs": 1,
+    "comments": ["same"],
+    "id": 4
+  },
+  {
+    "name": "wassssupppp",
+    "content": "2020 :(",
+    "giph": "https://media3.giphy.com/media/RJKHjCAdsAfQPn03qQ/200.gif?cid=56a6fadeuvv9ponwx4rudoy9aylmgad67i12ljmq9cld9oiy&rid=200.gif",
+    "date": "2020-12-26T12:45:15.204Z",
+    "likes": 2,
+    "dislikes": 0,
+    "laughs": 0,
+    "comments": ["Faaacts", "Right in the bin!"],
+    "id": 5
+  },
+  {
+    "name": "Ready for the weekend",
+    "content": "Had a long week at work and ready to destress! :)",
+    "giph": "https://media0.giphy.com/media/WTLceFZJ0eSigZUDXO/200.gif?cid=56a6fade959opzaeofkbi0lho56lye1yidyir9xz2cw98fba&rid=200.gif",
+    "date": "2020-12-26T12:46:55.618Z",
+    "likes": 3,
+    "dislikes": 0,
+    "laughs": 2,
+    "comments": ["truuueeeee"],
+    "id": 6
+  }
 ]
