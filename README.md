@@ -2,6 +2,8 @@
 
 An anonymous blogging site built in JavaScript, HTML, and CSS
 
+![](AnonJournalUX.gif)
+
 ## Installation & Usage
 
 ### Installation
