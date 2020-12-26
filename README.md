@@ -19,7 +19,7 @@ An anonymous blogging site built in JavaScript, HTML, and CSS
 
 ## Technologies
 
-- App: JavaScript, CSS (including the Skeleton Framework) and HTML
+- App: JavaScript, CSS (including the Skeleton CSS Framework) and HTML
 - Testing: Mocha, Chai and Puppeteer
 
 ## Process
