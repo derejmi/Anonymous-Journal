@@ -13,8 +13,12 @@ An anonymous blogging site built in JavaScript, HTML, and CSS
 ### Usage
 
 - Open your terminal/CLI and navigate to the `Anonymous-Journal` folder
+- `cd` into the `server` folder
 - Run `npm install` to install dependencies
-- Run `npm start` to launch server.
+- Run `npm start` to launch server
+- `cd` into the `client` folder
+- Run `npm install` to install dependencies
+- Load `index.html` in your browser
 - Enjoy posting anonymised entries!
 
 ## Technologies
