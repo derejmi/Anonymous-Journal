@@ -2,6 +2,8 @@
 
 An anonymous blogging site built in JavaScript, HTML, and CSS
 
+![](AnonJournalUX.gif)
+
 ## Installation & Usage
 
 ### Installation
@@ -17,7 +19,7 @@ An anonymous blogging site built in JavaScript, HTML, and CSS
 
 ## Technologies
 
-- App: JavaScript, CSS (including the Skeleton Framework) and HTML
+- App: JavaScript, CSS (including the Skeleton CSS Framework) and HTML
 - Testing: Mocha, Chai and Puppeteer
 
 ## Process
@@ -36,6 +38,7 @@ An anonymous blogging site built in JavaScript, HTML, and CSS
 - Successful incorporation of the Giphy API meanng users can post GIFs along with their messages
 - Users can see all the posts on loading the page as well as when they were posted.
 - The most recent posts are shown first, which is what a user would desire when wanting to view posts.
+- MAde emoji and comment icons affordable so users get feedback that they are able to click on them
 - Users are able to add comments (anonymously) to other posts - due to nifty DOM manipulation and application of event bubbling/propogation principles
 - Similarly users are able to react with three emojis as well as see a count of how many reactions (by emoji) and comments a post has recieved
 - Validation on both the front-end and back-end.
