@@ -40,7 +40,7 @@ An anonynmous blogging site built in JavaScript, HTML and CSS
 - Similarly users are able to react with three emojis as well as see a count of how many reactions (by emoji) and comments a post has recieved
 - Validation on both the front-end and back-end.
 - Front-end: Character limit of 200 which alerts the user and disables the form. The user is also shown a warning message if the post does not contain a title or content.
--Back-end : Requests are only processed by the API if there is a title and content. Inputs are also transformed into strings to prevent injections.
+- Back-end : Requests are only processed by the API if there is a title and content. Inputs are also transformed into strings to prevent injections.
 
 ### Challenges
 
