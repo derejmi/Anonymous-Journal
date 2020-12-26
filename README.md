@@ -1,6 +1,6 @@
 # Anonymous Journal
 
-An anonynmous blogging site built in JavaScript, HTML and CSS
+An anonymous blogging site built in JavaScript, HTML, and CSS
 
 ## Installation & Usage
 
