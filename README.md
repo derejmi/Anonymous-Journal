@@ -31,6 +31,8 @@ An anonymous blogging site built in JavaScript, HTML, and CSS
 - We then started building out functionality for our MVP by prioritising the most important features first such as being able to post and fetching all the posts upon loading the page.
 - After using this iterative approach to build out the app, we then turned our attention to styling and further testing(incl. UI testing with Puppeteer).
 
+## Architecture
+![](AnonymousJournalArch.svg)
 
 ## Wins & Challenges
 
